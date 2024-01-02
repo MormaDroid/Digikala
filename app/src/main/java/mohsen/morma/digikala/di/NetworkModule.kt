@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mohsen.morma.digikala.data.remote.home.IHome
+import mohsen.morma.digikala.data.remote.IHome
 import mohsen.morma.digikala.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -4,6 +4,8 @@ import mohsen.morma.digikala.BuildConfig
 
 object Constants {
 
+    const val TAG = "3636"
+
     const val DATASTORE_NAME = "DIGIKALA_DATASTORE"
     const val PERSIAN_LANG = "fa"
     const val ENGLISH_LANG = "en"
