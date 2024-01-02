@@ -64,7 +64,7 @@ fun DigikalaTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = Typography3,
         content = content
     )
 }
