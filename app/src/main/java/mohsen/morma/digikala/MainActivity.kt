@@ -8,6 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.navigation.compose.rememberNavController
 import mohsen.morma.digikala.navigation.NavSetup
 import mohsen.morma.digikala.ui.theme.DigikalaTheme
+import mohsen.morma.digikala.utils.SystemUI
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -16,6 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             val navController = rememberNavController()
+            SystemUI(navController)
 
             DigikalaTheme {
 
