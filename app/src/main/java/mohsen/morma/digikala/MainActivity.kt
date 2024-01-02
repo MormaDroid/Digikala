@@ -6,11 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Scaffold
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mohsen.morma.digikala.navigation.BottomNav
 import mohsen.morma.digikala.navigation.NavSetup
 import mohsen.morma.digikala.ui.theme.DigikalaTheme
-import mohsen.morma.digikala.utils.SystemUI
+import mohsen.morma.digikala.util.SystemUI
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {

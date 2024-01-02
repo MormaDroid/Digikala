@@ -1,4 +1,4 @@
-package mohsen.morma.digikala.utils
+package mohsen.morma.digikala.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
