@@ -6,4 +6,12 @@
     <string name="nav_basket">Basket</string>
     <string name="nav_profile">My Digikala</string>
     <string name="search_bar">Search in</string>
+    <string name="auction">Auction</string>
+    <string name="digi_jet">Digijet</string>
+    <string name="digipay">Digipay</string>
+    <string name="digi_plus">Digiplus</string>
+    <string name="gift_card">Giftcard</string>
+    <string name="more">More</string>
+    <string name="pindo">Pindo</string>
+    <string name="shopping">Shopping</string>
 </resources>

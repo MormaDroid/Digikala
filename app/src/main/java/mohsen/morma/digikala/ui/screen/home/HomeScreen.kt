@@ -1,6 +1,7 @@
 package mohsen.morma.digikala.ui.screen.home
 
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -44,13 +45,18 @@ fun HomeUI(homeVM: HomeVM) {
     val refresh = rememberSwipeRefreshState(isRefreshing =isRefresh )
 
     SwipeRefresh(state = refresh , onRefresh = { isRefresh = true }) {
-        LazyColumn {
+        LazyColumn(Modifier.fillMaxSize()) {
 
             item { SearchBarSection() }
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
             item { TopSliderSection() }
+
+            item { Spacer(modifier = Modifier.size(36.dp)) }
+
+            item { ShowCaseSection() }
+
         }
     }
 
