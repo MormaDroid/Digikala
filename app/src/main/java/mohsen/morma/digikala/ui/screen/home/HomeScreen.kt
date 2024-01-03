@@ -92,10 +92,15 @@ fun HomeUI(homeVM: HomeVM) {
                 )
             }
 
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { CategorySection() }
+
             item { Spacer(modifier = Modifier.size(64.dp)) }
         }
     }
 }
+
 
 private fun apiRequest(homeVM: HomeVM) {
     homeVM.apiRequest()
