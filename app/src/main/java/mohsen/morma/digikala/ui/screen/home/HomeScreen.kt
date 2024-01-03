@@ -96,11 +96,30 @@ fun HomeUI(homeVM: HomeVM) {
 
             item { CategorySection() }
 
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { HomeBanners(0) }
+
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { HomeBanners(1) }
+
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { HomeBanners(2) }
+
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { HomeBanners(3) }
+
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { HomeBanners(4) }
+
             item { Spacer(modifier = Modifier.size(64.dp)) }
         }
     }
 }
-
 
 private fun apiRequest(homeVM: HomeVM) {
     homeVM.apiRequest()

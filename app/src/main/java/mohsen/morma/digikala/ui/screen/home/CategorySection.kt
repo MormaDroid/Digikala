@@ -2,6 +2,8 @@ package mohsen.morma.digikala.ui.screen.home
 
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -62,7 +64,7 @@ fun CategorySection(homeVM: HomeVM = hiltViewModel()) {
         }
     }
 
-    AnimatedVisibility(visible = !isLoading) {
+    AnimatedVisibility(visible = !isLoading,enter = fadeIn(tween(2000))) {
 
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
 
