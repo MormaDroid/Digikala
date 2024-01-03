@@ -63,6 +63,7 @@ fun TopSliderSection(homeVM: HomeVM = hiltViewModel()) {
         is NetworkResult.Loading -> {
             isLoading = true
         }
+
     }
 
     val pagerState = rememberPagerState()
