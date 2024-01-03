@@ -3,6 +3,9 @@
 package mohsen.morma.digikala.ui.screen.home
 
 import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -66,50 +69,52 @@ fun TopSliderSection(homeVM: HomeVM = hiltViewModel()) {
 
     }
 
-    val pagerState = rememberPagerState()
+    AnimatedVisibility(visible = !isLoading, enter = fadeIn(tween(2000))) {
+        val pagerState = rememberPagerState()
 
-    HorizontalPager(
-        count = sliderList.size,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp),
-        state = pagerState,
-        itemSpacing = 16.dp,
-        contentPadding = PaddingValues(horizontal = 16.dp)
-    ) {
-
-
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.BottomStart
+        HorizontalPager(
+            count = sliderList.size,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+            state = pagerState,
+            itemSpacing = 16.dp,
+            contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
 
-            Image(
-                painter = rememberAsyncImagePainter(model = sliderList[it].image),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.FillBounds
-            )
 
-            HorizontalPagerIndicator(
-                pagerState = pagerState,
-                pageCount = sliderList.size,
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
-            )
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.BottomStart
+            ) {
+
+                Image(
+                    painter = rememberAsyncImagePainter(model = sliderList[it].image),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.FillBounds
+                )
+
+                HorizontalPagerIndicator(
+                    pagerState = pagerState,
+                    pageCount = sliderList.size,
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
+                )
+            }
         }
-    }
 
-    var key by remember { mutableStateOf(false) }
+        var key by remember { mutableStateOf(false) }
 
-    LaunchedEffect(key1 = key) {
-        launch {
-            delay(6000)
-            with(pagerState) {
-                val target = if (currentPage < pageCount - 1) currentPage + 1 else 0
-                animateScrollToPage(page = target) //Broken
-                key = !key
+        LaunchedEffect(key1 = key) {
+            launch {
+                delay(6000)
+                with(pagerState) {
+                    val target = if (currentPage < pageCount - 1) currentPage + 1 else 0
+                    animateScrollToPage(page = target) //Broken
+                    key = !key
+                }
             }
         }
     }
