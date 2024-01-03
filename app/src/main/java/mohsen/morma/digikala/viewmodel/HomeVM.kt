@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import mohsen.morma.digikala.data.remote.NetworkResult
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
+import mohsen.morma.digikala.data.remote.model.home.CenterBannerModel
 import mohsen.morma.digikala.data.remote.model.home.SliderModel
 import mohsen.morma.digikala.repository.HomeRepository
 import javax.inject.Inject
@@ -20,6 +21,8 @@ class HomeVM @Inject constructor(private val repository: HomeRepository) : ViewM
     var amazingList = MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
     var superMarketAmazingList = MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
 
+    var centerBannerList = MutableStateFlow<NetworkResult<List<CenterBannerModel>>>(NetworkResult.Loading())
+
     fun apiRequest(){
         viewModelScope.launch(Dispatchers.IO) {
 
@@ -28,6 +31,8 @@ class HomeVM @Inject constructor(private val repository: HomeRepository) : ViewM
             launch { repository.getAmazingProduct().let { amazingList.emit(it) } }
 
             launch { repository.getSuperMarketAmazingProducts().let { superMarketAmazingList.emit(it) } }
+
+            launch { repository.get4Banners().let { centerBannerList.emit(it) } }
 
         }
     }

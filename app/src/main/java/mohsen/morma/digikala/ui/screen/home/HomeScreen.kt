@@ -77,7 +77,11 @@ fun HomeUI(homeVM: HomeVM) {
                 )
             }
 
-            item { Spacer(modifier = Modifier.size(36.dp)) }
+            item { Spacer(modifier = Modifier.size(12.dp)) }
+
+            item { CenterBanners() }
+
+            item { Spacer(modifier = Modifier.size(12.dp)) }
 
             item {
                 AmazingProductSection(
@@ -87,6 +91,8 @@ fun HomeUI(homeVM: HomeVM) {
                     if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.supermarketamazings else R.drawable.amazing_en
                 )
             }
+
+            item { Spacer(modifier = Modifier.size(64.dp)) }
         }
     }
 }
