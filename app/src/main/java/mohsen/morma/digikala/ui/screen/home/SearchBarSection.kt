@@ -69,6 +69,8 @@ fun SearchBarSection() {
                     color = Color.Gray
                 )
 
+                Spacer(modifier = Modifier.size(8.dp))
+
                 Image(
                     painter = painterResource(
                         id = if (USER_LANG == PERSIAN_LANG) R.drawable.digi_red_persian
