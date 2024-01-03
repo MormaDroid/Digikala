@@ -100,7 +100,7 @@ fun AmazingItemSection(amazingModel: AmazingProductModel) {
         Text(
             text = amazingModel.name,
             style = Typography.h5,
-            modifier = Modifier.height(48.dp),
+            modifier = Modifier.height(28.dp),
             textAlign = TextAlign.Start,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
@@ -186,7 +186,7 @@ fun AmazingItemSection(amazingModel: AmazingProductModel) {
         Spacer(modifier = Modifier.size(12.dp))
 
         Text(
-            text = DigitHelper.digitByClockSeparator(amazingTimer),
+            text = DigitHelper.digitByLocate(DigitHelper.digitByClockSeparator(amazingTimer)),
             style = Typography.h4,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.End,

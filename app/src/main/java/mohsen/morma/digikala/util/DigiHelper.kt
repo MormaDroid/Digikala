@@ -40,6 +40,7 @@ object DigitHelper {
                     '9' -> {
                         newNumber += '۹'
                     }
+                    else -> {newNumber +=it}
                 }
             }
             return newNumber
@@ -66,7 +67,7 @@ object DigitHelper {
     }
 
     fun applyDiscount(price:Int , discount:Int):String{
-        return ((price * discount) / 100).toString()
+        return (price-(price * discount) / 100).toString()
     }
 
     fun digitBySeparatorAndLocate(number: String) : String {
