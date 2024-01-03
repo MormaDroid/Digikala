@@ -9,4 +9,8 @@ class HomeRepository @Inject constructor(private val api : IHome) :BaseApiRespon
 
     suspend fun getSlider()  = safeApiCall { api.getSlider() }
 
+    suspend fun getAmazingProduct() = safeApiCall { api.getAmazingProduct() }
+
+    suspend fun getSuperMarketAmazingProducts() = safeApiCall { api.getSuperMarketAmazingProducts() }
+
 }

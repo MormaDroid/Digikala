@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import mohsen.morma.digikala.navigation.Screen
-import mohsen.morma.digikala.ui.theme.DigikalaColor
+import mohsen.morma.digikala.ui.theme.DigikalaRed
 
 @Composable
 fun SystemUI(navController: NavHostController) {
@@ -16,8 +16,8 @@ fun SystemUI(navController: NavHostController) {
 
         when (navController.currentBackStackEntryAsState().value?.destination?.route) {
             Screen.Splash.route -> {
-                setStatusBarColor(DigikalaColor)
-                setNavigationBarColor(DigikalaColor)
+                setStatusBarColor(DigikalaRed)
+                setNavigationBarColor(DigikalaRed)
             }
 
             else -> {

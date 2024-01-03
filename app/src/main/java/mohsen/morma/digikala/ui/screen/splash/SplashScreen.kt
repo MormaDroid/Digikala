@@ -18,7 +18,7 @@ import kotlinx.coroutines.delay
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.navigation.Screen
 import mohsen.morma.digikala.ui.component.Lottie3dots
-import mohsen.morma.digikala.ui.theme.DigikalaColor
+import mohsen.morma.digikala.ui.theme.DigikalaRed
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
@@ -36,7 +36,7 @@ fun Splash() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(DigikalaColor)
+            .background(DigikalaRed)
     ) {
 
         Box(modifier = Modifier.fillMaxSize(), Alignment.Center) {

@@ -1,11 +1,13 @@
 package mohsen.morma.digikala.ui.screen.home
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,6 +18,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.delay
+import mohsen.morma.digikala.R
+import mohsen.morma.digikala.ui.screen.home.amazing.AmazingProductSection
+import mohsen.morma.digikala.ui.theme.DigikalaDarkGreen
+import mohsen.morma.digikala.ui.theme.DigikalaDarkRed
+import mohsen.morma.digikala.ui.theme.DigikalaGreen
+import mohsen.morma.digikala.ui.theme.DigikalaRed
+import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.viewmodel.HomeVM
 
 @Composable
@@ -33,8 +42,8 @@ fun HomeUI(homeVM: HomeVM) {
         mutableStateOf(false)
     }
 
-    LaunchedEffect(isRefresh){
-        if (isRefresh){
+    LaunchedEffect(isRefresh) {
+        if (isRefresh) {
             apiRequest(homeVM)
             delay(3000)
             isRefresh = false
@@ -42,9 +51,9 @@ fun HomeUI(homeVM: HomeVM) {
 
     }
 
-    val refresh = rememberSwipeRefreshState(isRefreshing =isRefresh )
+    val refresh = rememberSwipeRefreshState(isRefreshing = isRefresh)
 
-    SwipeRefresh(state = refresh , onRefresh = { isRefresh = true }) {
+    SwipeRefresh(state = refresh, onRefresh = { isRefresh = true }) {
         LazyColumn(Modifier.fillMaxSize()) {
 
             item { SearchBarSection() }
@@ -57,14 +66,31 @@ fun HomeUI(homeVM: HomeVM) {
 
             item { ShowCaseSection() }
 
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item {
+                AmazingProductSection(
+                    homeVM.amazingList.collectAsState().value,
+                    if (isSystemInDarkTheme()) DigikalaDarkRed else DigikalaRed,
+                    R.drawable.box,
+                    if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.amazings else R.drawable.amazing_en
+                )
+            }
+
+            item { Spacer(modifier = Modifier.size(36.dp)) }
+
+            item {
+                AmazingProductSection(
+                    homeVM.superMarketAmazingList.collectAsState().value,
+                    if (isSystemInDarkTheme()) DigikalaDarkGreen else DigikalaGreen,
+                    R.drawable.market_box,
+                    if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.supermarketamazings else R.drawable.amazing_en
+                )
+            }
         }
     }
-
-
-
-
 }
 
-private fun apiRequest(homeVM : HomeVM){
+private fun apiRequest(homeVM: HomeVM) {
     homeVM.apiRequest()
 }
