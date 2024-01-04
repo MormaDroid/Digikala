@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
@@ -35,6 +36,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mohsen.morma.digikala.data.remote.NetworkResult
 import mohsen.morma.digikala.data.remote.model.home.SliderModel
+import mohsen.morma.digikala.ui.component.ScreenLoading
 import mohsen.morma.digikala.util.Constants.TAG
 import mohsen.morma.digikala.viewmodel.HomeVM
 
@@ -67,6 +69,12 @@ fun TopSliderSection(homeVM: HomeVM = hiltViewModel()) {
             isLoading = true
         }
 
+    }
+
+    val height = LocalConfiguration.current.screenHeightDp
+
+    if (isLoading) {
+        ScreenLoading(height = height)
     }
 
     AnimatedVisibility(visible = !isLoading, enter = fadeIn(tween(2000))) {

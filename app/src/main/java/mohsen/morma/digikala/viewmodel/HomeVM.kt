@@ -7,10 +7,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import mohsen.morma.digikala.data.remote.NetworkResult
-import mohsen.morma.digikala.data.remote.model.BestSellerAndFavoriteModel
-import mohsen.morma.digikala.data.remote.model.HomeBannerModel
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
+import mohsen.morma.digikala.data.remote.model.home.BestSellerAndFavoriteModel
 import mohsen.morma.digikala.data.remote.model.home.CenterBannerModel
+import mohsen.morma.digikala.data.remote.model.home.HomeBannerModel
 import mohsen.morma.digikala.data.remote.model.home.HomeCategoryModel
 import mohsen.morma.digikala.data.remote.model.home.SliderModel
 import mohsen.morma.digikala.repository.HomeRepository
@@ -37,9 +37,10 @@ class HomeVM @Inject constructor(private val repository: HomeRepository) : ViewM
     var bestSellerList =
         MutableStateFlow<NetworkResult<List<BestSellerAndFavoriteModel>>>(NetworkResult.Loading())
 
-    var mostFavoriteList = MutableStateFlow<NetworkResult<List<BestSellerAndFavoriteModel>>>(NetworkResult.Loading())
+    var mostFavoriteList =
+        MutableStateFlow<NetworkResult<List<BestSellerAndFavoriteModel>>>(NetworkResult.Loading())
 
-    fun apiRequest() {
+    fun homeApiRequest() {
         viewModelScope.launch(Dispatchers.IO) {
 
             launch { repository.getSlider().let { sliderList.emit(it) } }

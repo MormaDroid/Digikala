@@ -1,7 +1,7 @@
 package mohsen.morma.digikala.data.remote
 
-import mohsen.morma.digikala.data.remote.model.BestSellerAndFavoriteModel
-import mohsen.morma.digikala.data.remote.model.HomeBannerModel
+import mohsen.morma.digikala.data.remote.model.home.BestSellerAndFavoriteModel
+import mohsen.morma.digikala.data.remote.model.home.HomeBannerModel
 import mohsen.morma.digikala.data.remote.model.NetworkModel
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
 import mohsen.morma.digikala.data.remote.model.home.CenterBannerModel

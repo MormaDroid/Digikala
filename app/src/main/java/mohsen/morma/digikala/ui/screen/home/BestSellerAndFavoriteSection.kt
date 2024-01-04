@@ -24,14 +24,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import mohsen.morma.digikala.data.remote.NetworkResult
-import mohsen.morma.digikala.data.remote.model.BestSellerAndFavoriteModel
+import mohsen.morma.digikala.data.remote.model.home.BestSellerAndFavoriteModel
+import mohsen.morma.digikala.ui.theme.DigikalaBlue
 import mohsen.morma.digikala.ui.theme.Typography
 import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.util.DigitHelper
@@ -96,7 +96,7 @@ fun BestSellerAndFavoriteSection(result : NetworkResult<List<BestSellerAndFavori
                         Text(
                             text = DigitHelper.digitByLocate((index+1).toString()),
                             style = Typography.h1,
-                            color = Color(0xFF1771B9)
+                            color = DigikalaBlue
                         )
 
                         Spacer(modifier = Modifier.size(8.dp))

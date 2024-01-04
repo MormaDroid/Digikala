@@ -36,7 +36,7 @@ import mohsen.morma.digikala.viewmodel.HomeVM
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun CategorySection(homeVM: HomeVM = hiltViewModel()) {
+fun HomeCategorySection(homeVM: HomeVM = hiltViewModel()) {
 
     var isLoading by remember {
         mutableStateOf(true)

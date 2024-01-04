@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import mohsen.morma.digikala.data.remote.ICategory
 import mohsen.morma.digikala.data.remote.IHome
 import mohsen.morma.digikala.util.Constants
 import okhttp3.OkHttpClient
@@ -43,5 +44,8 @@ object NetworkModule {
 
     @Provides
     fun provideHomeInterface(retrofit: Retrofit) : IHome = retrofit.create(IHome::class.java)
+
+    @Provides
+    fun provideCategoryInterface(retrofit: Retrofit) : ICategory = retrofit.create(ICategory::class.java)
 
 }

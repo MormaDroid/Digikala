@@ -94,7 +94,7 @@ fun HomeUI(homeVM: HomeVM) {
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
-            item { CategorySection() }
+            item { HomeCategorySection() }
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
@@ -130,5 +130,5 @@ fun HomeUI(homeVM: HomeVM) {
 }
 
 private fun apiRequest(homeVM: HomeVM) {
-    homeVM.apiRequest()
+    homeVM.homeApiRequest()
 }

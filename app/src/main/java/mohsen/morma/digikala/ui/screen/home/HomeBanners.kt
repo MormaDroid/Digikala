@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import mohsen.morma.digikala.data.remote.NetworkResult
-import mohsen.morma.digikala.data.remote.model.HomeBannerModel
+import mohsen.morma.digikala.data.remote.model.home.HomeBannerModel
 import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.viewmodel.HomeVM
 

@@ -16,4 +16,6 @@ val DigikalaDarkRed = Color(0xFF8D2633)
 val DigikalaGreen = Color(0xff86bf3c)
 val DigikalaDarkGreen = Color(0xFF3A531A)
 
+val DigikalaBlue = Color(0xFF1771B9)
+
 
