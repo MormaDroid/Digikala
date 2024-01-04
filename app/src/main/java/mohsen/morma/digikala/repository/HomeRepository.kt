@@ -19,4 +19,8 @@ class HomeRepository @Inject constructor(private val api : IHome) :BaseApiRespon
 
     suspend fun getCenterBanners() = safeApiCall { api.getCenterBanners() }
 
+    suspend fun getBestSeller()  = safeApiCall { api.getBestSeller() }
+
+    suspend fun getMostFavorite()  = safeApiCall { api.getMostFavorite() }
+
 }

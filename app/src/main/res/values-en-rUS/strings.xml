@@ -17,4 +17,7 @@
     <string name="see_all">See all products</string>
     <string name="amazing_app">Amazing exclusive app</string>
     <string name="buy_by_categories">Shop by categories</string>
+    <string name="best_seller">Best selling products</string>
+    <string name="most_favorite">Most favorite products</string>
+
 </resources>

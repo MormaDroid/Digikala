@@ -1,5 +1,6 @@
 package mohsen.morma.digikala.data.remote
 
+import mohsen.morma.digikala.data.remote.model.BestSellerAndFavoriteModel
 import mohsen.morma.digikala.data.remote.model.HomeBannerModel
 import mohsen.morma.digikala.data.remote.model.NetworkModel
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
@@ -28,5 +29,11 @@ interface IHome {
 
     @GET("api/v1/getCenterBanners")
     suspend fun getCenterBanners() : Response<NetworkModel<List<HomeBannerModel>>>
+
+    @GET("api/v1/getBestSellerProducts")
+    suspend fun getBestSeller() : Response<NetworkModel<List<BestSellerAndFavoriteModel>>>
+
+    @GET("api/v1/getMostFavoriteProducts")
+    suspend fun getMostFavorite() : Response<NetworkModel<List<BestSellerAndFavoriteModel>>>
 
 }

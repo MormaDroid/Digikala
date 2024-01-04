@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import mohsen.morma.digikala.data.remote.NetworkResult
+import mohsen.morma.digikala.data.remote.model.BestSellerAndFavoriteModel
 import mohsen.morma.digikala.data.remote.model.HomeBannerModel
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
 import mohsen.morma.digikala.data.remote.model.home.CenterBannerModel
@@ -20,29 +21,44 @@ class HomeVM @Inject constructor(private val repository: HomeRepository) : ViewM
 
     var sliderList = MutableStateFlow<NetworkResult<List<SliderModel>>>(NetworkResult.Loading())
 
-    var amazingList = MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
-    var superMarketAmazingList = MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
+    var amazingList =
+        MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
+    var superMarketAmazingList =
+        MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
 
-    var centerBannerList = MutableStateFlow<NetworkResult<List<CenterBannerModel>>>(NetworkResult.Loading())
+    var centerBannerList =
+        MutableStateFlow<NetworkResult<List<CenterBannerModel>>>(NetworkResult.Loading())
 
-    var categoryList = MutableStateFlow<NetworkResult<List<HomeCategoryModel>>>(NetworkResult.Loading())
+    var categoryList =
+        MutableStateFlow<NetworkResult<List<HomeCategoryModel>>>(NetworkResult.Loading())
 
-    var homeBannerList = MutableStateFlow<NetworkResult<List<HomeBannerModel>>>(NetworkResult.Loading())
+    var homeBannerList =
+        MutableStateFlow<NetworkResult<List<HomeBannerModel>>>(NetworkResult.Loading())
+    var bestSellerList =
+        MutableStateFlow<NetworkResult<List<BestSellerAndFavoriteModel>>>(NetworkResult.Loading())
 
-    fun apiRequest(){
+    var mostFavoriteList = MutableStateFlow<NetworkResult<List<BestSellerAndFavoriteModel>>>(NetworkResult.Loading())
+
+    fun apiRequest() {
         viewModelScope.launch(Dispatchers.IO) {
 
             launch { repository.getSlider().let { sliderList.emit(it) } }
 
             launch { repository.getAmazingProduct().let { amazingList.emit(it) } }
 
-            launch { repository.getSuperMarketAmazingProducts().let { superMarketAmazingList.emit(it) } }
+            launch {
+                repository.getSuperMarketAmazingProducts().let { superMarketAmazingList.emit(it) }
+            }
 
             launch { repository.get4Banners().let { centerBannerList.emit(it) } }
 
             launch { repository.getCategories().let { categoryList.emit(it) } }
 
             launch { repository.getCenterBanners().let { homeBannerList.emit(it) } }
+
+            launch { repository.getBestSeller().let { bestSellerList.emit(it) } }
+
+            launch { repository.getMostFavorite().let { mostFavoriteList.emit(it) } }
 
         }
     }

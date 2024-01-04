@@ -102,7 +102,15 @@ fun HomeUI(homeVM: HomeVM) {
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
+            item { BestSellerAndFavoriteSection(homeVM.bestSellerList.collectAsState().value,R.string.best_seller)}
+
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
             item { HomeBanners(1) }
+
+            item { Spacer(modifier = Modifier.size(20.dp)) }
+
+            item { BestSellerAndFavoriteSection(homeVM.mostFavoriteList.collectAsState().value,R.string.most_favorite) }
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
