@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import mohsen.morma.digikala.data.remote.IBasket
 import mohsen.morma.digikala.data.remote.ICategory
 import mohsen.morma.digikala.data.remote.IHome
 import mohsen.morma.digikala.util.Constants
@@ -47,5 +48,8 @@ object NetworkModule {
 
     @Provides
     fun provideCategoryInterface(retrofit: Retrofit) : ICategory = retrofit.create(ICategory::class.java)
+
+    @Provides
+    fun provideBasketInterface(retrofit: Retrofit) : IBasket = retrofit.create(IBasket::class.java)
 
 }

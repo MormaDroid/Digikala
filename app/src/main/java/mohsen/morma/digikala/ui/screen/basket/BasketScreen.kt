@@ -66,7 +66,7 @@ fun BasketUI() {
                     text = {
                         Text(
                             text = stringResource(item),
-                            style = Typography.h4,
+                            style = Typography.h5,
                             color = if (selectedTabIndex == index) {
                                 if (isSystemInDarkTheme()) DigikalaDarkRed else DigikalaRed
                             } else {

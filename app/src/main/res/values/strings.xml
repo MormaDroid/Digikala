@@ -35,6 +35,8 @@
 
     <string name="cart">سبد‌خرید</string>
     <string name="next_cart_list">لیست خرید بعدی</string>
+    <string name="empty_basket">سبد‌خرید شما خالی است.</string>
+    <string name="suggestion_for_you">پیشنهاد برای شما</string>
 
 
 </resources>

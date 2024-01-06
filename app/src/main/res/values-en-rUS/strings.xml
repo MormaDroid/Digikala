@@ -34,6 +34,8 @@
     <string name="commodity">Commodity</string>
     <string name="cart">Cart</string>
     <string name="next_cart_list">Next cart list</string>
+    <string name="empty_basket">Your basket is empty</string>
+    <string name="suggestion_for_you">Suggestion for you</string>
 
 
 </resources>
