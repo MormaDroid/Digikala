@@ -32,6 +32,8 @@
     <string name="books_and_stationery">Books and stationery</string>
     <string name="sports_and_travel">Sports and Travel</string>
     <string name="commodity">Commodity</string>
+    <string name="cart">Cart</string>
+    <string name="next_cart_list">Next cart list</string>
 
 
 </resources>

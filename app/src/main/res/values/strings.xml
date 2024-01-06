@@ -33,5 +33,8 @@
     <string name="sports_and_travel">ورزش و سفر</string>
     <string name="commodity">کالا</string>
 
+    <string name="cart">سبد‌خرید</string>
+    <string name="next_cart_list">لیست خرید بعدی</string>
+
 
 </resources>
