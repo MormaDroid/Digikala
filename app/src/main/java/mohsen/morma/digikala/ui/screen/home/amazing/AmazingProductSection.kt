@@ -55,7 +55,7 @@ fun AmazingProductSection(
     Row(
         Modifier
             .fillMaxWidth()
-            .height(380.dp)
+            .height(364.dp)
             .background(backgroundColor),
         verticalAlignment = Alignment.CenterVertically
     ) {

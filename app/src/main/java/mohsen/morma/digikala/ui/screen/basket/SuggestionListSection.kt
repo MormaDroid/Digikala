@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,6 +29,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.data.remote.NetworkResult
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
+import mohsen.morma.digikala.data.room.CartEntity
+import mohsen.morma.digikala.data.room.CartStatus
 import mohsen.morma.digikala.ui.component.ScreenLoading
 import mohsen.morma.digikala.ui.theme.Typography
 import mohsen.morma.digikala.util.Constants.TAG
@@ -37,7 +40,7 @@ import mohsen.morma.digikala.viewmodel.BasketVM
 @Composable
 fun SuggestionListSection(basketVM: BasketVM = hiltViewModel()) {
 
-    basketVM.apiRequest()
+    BasketApiRequest(basketVM)
 
     var isLoading by remember {
         mutableStateOf(true)
@@ -77,7 +80,9 @@ fun SuggestionListSection(basketVM: BasketVM = hiltViewModel()) {
             Text(
                 text = stringResource(id = R.string.suggestion_for_you),
                 style = Typography.h2,
-                modifier = Modifier.fillMaxWidth().padding(start = 8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 8.dp),
                 textAlign = TextAlign.Start
             )
 
@@ -89,14 +94,34 @@ fun SuggestionListSection(basketVM: BasketVM = hiltViewModel()) {
                 verticalArrangement = Arrangement.Top
             ) {
 
-                suggestionList.forEach {
-                    SuggestionItemSection(suggestionModel = it)
+                suggestionList.forEach { amazingProductModel ->
+                    SuggestionItemSection(suggestionModel = amazingProductModel) {
+                        basketVM.insertCartItem(
+                            CartEntity(
+                                it._id,
+                                it.discountPercent,
+                                it.image,
+                                it.name,
+                                it.price,
+                                it.seller,
+                                1,
+                                CartStatus.CURRENT_CARD
+                            )
+                        )
+                    }
                 }
 
             }
         }
 
 
+    }
+}
+
+@Composable
+private fun BasketApiRequest(basketVM: BasketVM) {
+    LaunchedEffect(true){
+        basketVM.apiRequest()
     }
 }
 

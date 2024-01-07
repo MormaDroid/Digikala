@@ -16,4 +16,6 @@ object Constants {
     const val X_API_KEY = BuildConfig.X_API_KEY
     const val BASE_URL = BuildConfig.BASE_URL
 
+    const val DATABASE_NAME = "DIGIKALA_DATABASE"
+
 }

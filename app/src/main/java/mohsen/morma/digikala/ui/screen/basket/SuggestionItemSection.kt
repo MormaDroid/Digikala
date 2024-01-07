@@ -2,6 +2,7 @@ package mohsen.morma.digikala.ui.screen.basket
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,11 +17,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,7 +43,7 @@ import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.util.DigitHelper
 
 @Composable
-fun SuggestionItemSection(suggestionModel: AmazingProductModel) {
+fun SuggestionItemSection(suggestionModel: AmazingProductModel,addClick : (AmazingProductModel) -> Unit) {
 
     Column(
         Modifier
@@ -64,16 +65,19 @@ fun SuggestionItemSection(suggestionModel: AmazingProductModel) {
                 contentScale = ContentScale.FillBounds
             )
 
-            FloatingActionButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(24.dp),
-                backgroundColor = Color.White
+            IconButton(
+                onClick = { addClick(suggestionModel) }
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = null,
-                    modifier = Modifier.size(20.dp),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .border(
+                            1.dp,
+                            if (isSystemInDarkTheme()) DigikalaDarkRed else DigikalaRed,
+                            CircleShape
+                        ),
                     tint = if (isSystemInDarkTheme()) DigikalaDarkRed else DigikalaRed
                 )
             }
