@@ -33,13 +33,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import mohsen.morma.digikala.data.room.CartEntity
 import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.viewmodel.BasketVM
 
 @Composable
 fun ShoppingCart(
-    basketVM: BasketVM = hiltViewModel()
+    basketVM: BasketVM = hiltViewModel(),
+    navController: NavHostController
 ) {
 
     val cartDetail by basketVM.cartDetail.collectAsState()
@@ -83,6 +85,12 @@ fun ShoppingCart(
                     .wrapContentHeight()
                     .padding(bottom = 65.dp)
             ) {
+
+                item {
+                    if (Constants.USER_TOKEN == "null"){
+                        LoginOrRegisterSection(navController)
+                    }
+                }
 
                 item {
                     AnimatedVisibility(
@@ -153,8 +161,6 @@ fun ShoppingCart(
                 }
 
         }
-
-
     }
 }
 

@@ -68,6 +68,28 @@
     <string name="digikala_login">بزن بریم!</string>
     <string name="password_error">اطلاعات وارد شده صحیح نیست</string>
     <string name="password_format_error">پسورد باید حداقل 6 رقم باشد</string>
+    <string name="active_wallet">فعالسازی کیف پول</string>
+    <string name="auth">احراز هویت</string>
+    <string name="club">دیجی ‌کلاب</string>
+    <string name="contact_us">تماس با ما</string>
+    <string name="my_orders">سفارش‌های من</string>
+    <string name="unpaid">در انتظار پرداخت</string>
+    <string name="processing">در حال پردازش</string>
+    <string name="returned">مرجوع شده</string>
+    <string name="cancelled">لغو شده</string>
+    <string name="delivered">تحویل شده</string>
+
+    <string name="fav_list">لیست مورد علاقه</string>
+    <string name="my_comments">نقد و نظرات</string>
+    <string name="addresses">آدرس‌ها</string>
+    <string name="profile_data">اطلاعات حساب کاربری</string>
+
+    <string name="login_or_register">ورود یا ثبت نام</string>
+    <string name="login_or_register_msg">برای تجربه بهتر خرید و بررسی روش ارسال کالاها لطفا وارد شوید.</string>
+
+
+
+
 
 
 

@@ -18,4 +18,6 @@ val DigikalaDarkGreen = Color(0xFF3A531A)
 
 val DigikalaBlue = Color(0xFF1771B9)
 
+val Amber = Color(0xffFFBF00)
+
 

@@ -18,7 +18,7 @@ fun NavSetup(navController: NavHostController) {
         composable(Screen.Splash.route){ SplashScreen(navController)}
         composable(Screen.Home.route){ HomeScreen()}
         composable(Screen.Category.route){ CategoryScreen()}
-        composable(Screen.Basket.route){ BasketScreen()}
+        composable(Screen.Basket.route){ BasketScreen(navController)}
         composable(Screen.Profile.route){ ProfileScreen()}
 
     }

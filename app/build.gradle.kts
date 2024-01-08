@@ -25,6 +25,8 @@ android {
 
         buildConfigField("String","X_API_KEY", apiKeyProperties["X_API_KEY"].toString())
         buildConfigField("String","BASE_URL", apiKeyProperties["BASE_URL"].toString())
+        buildConfigField("String","key", apiKeyProperties["key"].toString())
+        buildConfigField("String","iv", apiKeyProperties["iv"].toString())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

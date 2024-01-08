@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.ui.theme.DigikalaDarkRed
 import mohsen.morma.digikala.ui.theme.DigikalaRed
@@ -31,14 +32,14 @@ import mohsen.morma.digikala.ui.theme.Typography
 import mohsen.morma.digikala.viewmodel.BasketVM
 
 @Composable
-fun BasketScreen() {
+fun BasketScreen(navController: NavHostController) {
 
-    BasketUI()
+    BasketUI(navController = navController)
 
 }
 
 @Composable
-fun BasketUI(basketVM: BasketVM = hiltViewModel()) {
+fun BasketUI(basketVM: BasketVM = hiltViewModel(),navController: NavHostController) {
 
     val  totalCurrentCartCount by basketVM.totalCurrentCartCount.collectAsState(initial = 0)
 
@@ -104,7 +105,7 @@ fun BasketUI(basketVM: BasketVM = hiltViewModel()) {
         }
 
         when (selectedTabIndex) {
-            0 -> ShoppingCart()
+            0 -> ShoppingCart(navController = navController)
             1 -> NextShoppingCart()
         }
 
