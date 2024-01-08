@@ -34,8 +34,26 @@
     <string name="commodity">Commodity</string>
     <string name="cart">Cart</string>
     <string name="next_cart_list">Next cart list</string>
-    <string name="empty_basket">Your basket is empty</string>
+    <string name="empty_current_cart">Your basket is empty</string>
     <string name="suggestion_for_you">Suggestion for you</string>
+    <string name="your_shopping_list">Your shopping list</string>
+    <string name="commodity_warranty">Warranty commodity</string>
+    <string name="digikala_supermarket_fast_delivery">Digikala supermarket fast delivery</string>
+    <string name="posted_by_digiKala">Posted by Digikala</string>
+    <string name="save_in_next_cart">Save in next cart</string>
+    <string name="price_off">dollar off</string>
+    <string name="empty_next_cart">Your next shopping list is empty</string>
+    <string name="delete_from_list">Delete from list</string>
+    <string name="basket_summary">Basket summary</string>
+    <string name="commodities_price">commodities price</string>
+    <string name="total_basket">Total basket</string>
+    <string name="commodities_discount">Commodities discount</string>
+    <string name="post_info">The shipping cost is calculated based on the address, delivery time, weight and volume of your shipment</string>
+    <string name="digiclub_score">Digiclub score</string>
+    <string name="score">Score</string>
+    <string name="digiclub_info">After the return period ends, visit the Club Missions page to claim points.</string>
+    <string name="continue_purchase">Continue the purchase</string>
+    <string name="seller">Available in Digikala</string>
 
 
 </resources>

@@ -77,6 +77,8 @@ fun SuggestionListSection(basketVM: BasketVM = hiltViewModel()) {
 
         Column {
 
+            Spacer(modifier = Modifier.size(16.dp))
+
             Text(
                 text = stringResource(id = R.string.suggestion_for_you),
                 style = Typography.h2,

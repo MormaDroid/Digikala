@@ -57,6 +57,10 @@ object DigitHelper {
         return (price-(price * discount) / 100).toString()
     }
 
+    fun calculateDiscount(price:Int,discount:Int) = ((price *discount)/100)
+
+
+
     fun digitBySeparatorAndLocate(number: String) : String {
         val locateNumber = digitByLocate(number)
         return digitBySeparator(locateNumber)

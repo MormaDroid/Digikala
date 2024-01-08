@@ -60,24 +60,24 @@ fun BottomNav(navController: NavHostController) {
             elevation = 8.dp
         ) {
 
-            itemsList.forEach {
+            itemsList.forEach{item ->
 
-                val selected = it.route == backStackEntry?.destination?.route
+                val selected = item.route == backStackEntry?.destination?.route
 
                 BottomNavigationItem(
                     selected = selected,
-                    onClick = { navController.navigate(it.route) },
+                    onClick = { navController.navigate(item.route) },
                     icon = {
-                        Icon(
-                            painter = painterResource(id = if (selected) it.selectedItem else it.unSelectedItem),
-                            contentDescription = it.route,
-                            modifier = Modifier.height(24.dp)
-                        )
+                            Icon(
+                                painter = painterResource(id = if (selected) item.selectedItem else item.unSelectedItem),
+                                contentDescription = item.route,
+                                modifier = Modifier.height(24.dp)
+                            )
                     },
                     label = {
                         if (selected)
                             Text(
-                                text = stringResource(id = it.name),
+                                text = stringResource(id = item.name),
                                 style = Typography.h6
                             )
                     },
