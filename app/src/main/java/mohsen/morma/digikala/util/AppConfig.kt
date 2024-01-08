@@ -10,6 +10,6 @@ fun AppConfig(datastoreVM: DatastoreVM = hiltViewModel()) {
 }
 
 private fun getDataStoreVariables(datastoreVM: DatastoreVM){
-    Constants.USER_LANG = datastoreVM.restoreLanguage() ?: Constants.PERSIAN_LANG
+    Constants.USER_LANG =  Constants.PERSIAN_LANG
     datastoreVM.saveUserLanguage(Constants.USER_LANG)
 }

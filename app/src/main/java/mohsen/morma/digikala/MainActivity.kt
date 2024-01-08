@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
             AppConfig()
 
+
             LocaleUtils().setLocale(this, USER_LANG)
 
             val navController = rememberNavController()
