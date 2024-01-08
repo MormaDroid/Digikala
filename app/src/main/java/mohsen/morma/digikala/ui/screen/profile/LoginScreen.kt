@@ -1,7 +1,7 @@
 package mohsen.morma.digikala.ui.screen.profile
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,9 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -25,20 +22,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import mohsen.morma.digikala.R
+import mohsen.morma.digikala.data.remote.model.profile.ProfileScreenState
 import mohsen.morma.digikala.ui.theme.DigikalaBlue
-import mohsen.morma.digikala.ui.theme.DigikalaDarkRed
-import mohsen.morma.digikala.ui.theme.DigikalaRed
 import mohsen.morma.digikala.ui.theme.Typography
+import mohsen.morma.digikala.util.InputValidation
+import mohsen.morma.digikala.viewmodel.ProfileVM
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(profileVM: ProfileVM = hiltViewModel()) {
+
+    val context  = LocalContext.current
 
     LazyColumn(
         Modifier
@@ -108,34 +110,26 @@ fun LoginScreen() {
 
         item {
             ProfileEditText(
-                "",
+                profileVM.inputPhoneState,
                 stringResource(id = R.string.phone_and_email),
             ) {
-
+                profileVM.inputPhoneState = it
             }
         }
 
         item { Spacer(modifier = Modifier.size(20.dp)) }
 
         item {
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = if (isSystemInDarkTheme()) DigikalaDarkRed else DigikalaRed
-                )
-            ) {
-
-                Text(
-                    text = stringResource(id = R.string.digikala_entry),
-                    style = Typography.h3,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-
+            ProfileButton(stringResource(id = R.string.digikala_entry)) {
+                if (InputValidation.isValidEmail(profileVM.inputPhoneState) || InputValidation.isValidPhone(profileVM.inputPhoneState)){
+                    profileVM.screenState = ProfileScreenState.REGISTRY_STATE
+                }else{
+                    Toast.makeText(
+                        context,
+                        context.getText(R.string.login_error),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
 

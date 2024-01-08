@@ -16,24 +16,29 @@ import mohsen.morma.digikala.ui.theme.Typography
 fun ProfileEditText(
     value: String,
     placeHolderText : String,
+    isEnable : Boolean = true,
     onValueChange : (String) -> Unit
 ) {
 
     TextField(
         value = value,
         onValueChange = { onValueChange(it) },
+        enabled = isEnable,
         placeholder = {
             Text(text = placeHolderText, style = Typography.h5)
         },
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.textFieldColors(
             textColor = Color.Black,
-            backgroundColor = Color.LightGray.copy(0.5f),
+            backgroundColor = Color.LightGray.copy(0.2f),
             cursorColor = DigikalaBlue,
-            unfocusedLabelColor = Color.LightGray.copy(0.5f),
-            focusedLabelColor = Color.LightGray.copy(0.5f),
+            unfocusedLabelColor = Color.LightGray.copy(0.2f),
+            focusedLabelColor = Color.LightGray.copy(0.2f),
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            disabledLabelColor = Color.Transparent,
+            disabledTextColor = Color.Black
         ),
         shape = RoundedCornerShape(8.dp)
     )

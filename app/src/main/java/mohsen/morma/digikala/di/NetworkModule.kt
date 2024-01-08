@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import mohsen.morma.digikala.data.remote.IBasket
 import mohsen.morma.digikala.data.remote.ICategory
 import mohsen.morma.digikala.data.remote.IHome
+import mohsen.morma.digikala.data.remote.IProfile
 import mohsen.morma.digikala.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,37 +20,42 @@ import java.util.concurrent.TimeUnit
 object NetworkModule {
 
     @Provides
-    internal fun interceptor() : HttpLoggingInterceptor =
+    internal fun interceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     @Provides
-    fun provideClient(interceptor: HttpLoggingInterceptor) : OkHttpClient = OkHttpClient.Builder()
-        .readTimeout(Constants.TIMEOUT_TIME,TimeUnit.SECONDS)
-        .writeTimeout(Constants.TIMEOUT_TIME,TimeUnit.SECONDS)
-        .connectTimeout(Constants.TIMEOUT_TIME,TimeUnit.SECONDS)
+    fun provideClient(interceptor: HttpLoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
+        .readTimeout(Constants.TIMEOUT_TIME, TimeUnit.SECONDS)
+        .writeTimeout(Constants.TIMEOUT_TIME, TimeUnit.SECONDS)
+        .connectTimeout(Constants.TIMEOUT_TIME, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
-        .addInterceptor {chain ->
+        .addInterceptor { chain ->
             val request = chain.request().newBuilder()
-                .addHeader("x-api-key",Constants.X_API_KEY)
-                .addHeader("lang",Constants.USER_LANG)
+                .addHeader("x-api-key", Constants.X_API_KEY)
+                .addHeader("lang", Constants.USER_LANG)
             chain.proceed(request.build())
         }
         .build()
 
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit = Retrofit.Builder()
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(Constants.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
 
     @Provides
-    fun provideHomeInterface(retrofit: Retrofit) : IHome = retrofit.create(IHome::class.java)
+    fun provideHomeInterface(retrofit: Retrofit): IHome = retrofit.create(IHome::class.java)
 
     @Provides
-    fun provideCategoryInterface(retrofit: Retrofit) : ICategory = retrofit.create(ICategory::class.java)
+    fun provideCategoryInterface(retrofit: Retrofit): ICategory =
+        retrofit.create(ICategory::class.java)
 
     @Provides
-    fun provideBasketInterface(retrofit: Retrofit) : IBasket = retrofit.create(IBasket::class.java)
+    fun provideBasketInterface(retrofit: Retrofit): IBasket = retrofit.create(IBasket::class.java)
+
+    @Provides
+    fun provideProfileInterface(retrofit: Retrofit): IProfile =
+        retrofit.create(IProfile::class.java)
 
 }
