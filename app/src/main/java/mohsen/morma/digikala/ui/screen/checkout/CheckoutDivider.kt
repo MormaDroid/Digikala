@@ -11,9 +11,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CheckoutDivider(spacerSize : Dp = 12.dp) {
+fun CheckoutDivider(spacerSize : Dp = 8.dp,thickness : Dp = 1.dp) {
     Column {
         Spacer(modifier = Modifier.size(spacerSize))
-        Divider(color = Color.LightGray)
+        Divider(color = Color.LightGray.copy(0.5f), thickness = thickness)
     }
 }

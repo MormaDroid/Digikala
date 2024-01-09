@@ -90,6 +90,19 @@
     <string name="send_to">ارسال به</string>
     <string name="no_address">آدرسی برای نمایش وجود ندارد.</string>
     <string name="change_or_edit_address">تغییر یا ویرایش آدرس</string>
+    <string name="delivery_method">شیوه و زمان ارسال</string>
+    <string name="from">از</string>
+    <string name="fast_delivery">ارسال سریع</string>
+    <string name="Shipment">مرسوله ۱ از ۱</string>
+    <string name="shipment_cost">هزینه ارسال</string>
+    <string name="ready_to_send">آماده ارسال</string>
+    <string name="choose_a_time_to_send">انتخاب زمان ارسال</string>
+    <string name="price_detail">جزئیات قیمت</string>
+    <string name="invoice_info">شما میتوانید فاکتور خرید خود را پس از تحویل سفارش از بخش جزئیات سفارش در حساب کاربری خود دریافت نمایید.</string>
+    <string name="post_detail">محاسبه شده براساس آدرس، زمان تحویل، وزن و حجم مرسوله شما</string>
+    <string name="aount_payable">مبلغ قابل پرداخت</string>
+    <string name="pishtaz_post">ارسال توسط پست پیشتاز</string>
+    <string name="delivery_delay">3 تا 5 روز کاری</string>
 
 
 </resources>

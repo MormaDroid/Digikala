@@ -39,7 +39,7 @@ fun DigiClubScoreSection(totalCont : Int) {
                 text = stringResource(id = R.string.digiclub_score),
                 style = Typography.h5,
                 fontWeight = FontWeight.SemiBold,
-                color = Color.Gray.copy(0.9f)
+                color = Color.DarkGray
             )
         }
 

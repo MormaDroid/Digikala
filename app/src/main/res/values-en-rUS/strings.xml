@@ -90,8 +90,20 @@
 
     <string name="no_address">There is not Address for show.</string>
     <string name="change_or_edit_address">Change or edit address</string>
+    <string name="delivery_method">Delivery method and time</string>
+    <string name="from">from</string>
+    <string name="fast_delivery">Fast delivery</string>
+    <string name="Shipment">Shipment 1 of 1</string>
+    <string name="ready_to_send">Ready to send</string>
+    <string name="shipment_cost">Shipment cost</string>
+    <string name="choose_a_time_to_send">Choose a time to send</string>
+    <string name="invoice_info">You can receive your purchase invoice after order delivery from the order details section in your user account.</string>
+    <string name="price_detail">Price detail</string>
+    <string name="post_detail">Calculated based on the address, delivery time, weight and volume of your shipment</string>
+    <string name="aount_payable">The amount payable</string>
 
-
+    <string name="pishtaz_post">Posted by Pishtaz Post</string>
+    <string name="delivery_delay">3 to 5 working days</string>
 
 
 </resources>

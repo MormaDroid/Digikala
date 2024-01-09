@@ -136,7 +136,7 @@ fun ShoppingCart(
                         enter = fadeIn(tween(500)),
                         exit = fadeOut(tween(500))
                     ) {
-                        CartPriceDetailSection(cartDetail)
+                        CartPriceDetailSection(cartDetail, false)
                     }
                 }
 

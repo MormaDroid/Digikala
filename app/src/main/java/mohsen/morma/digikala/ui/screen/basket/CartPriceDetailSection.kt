@@ -31,7 +31,11 @@ import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.util.DigitHelper
 
 @Composable
-fun CartPriceDetailSection(cartDetail : CartDetailModel) {
+fun CartPriceDetailSection(
+    cartDetail: CartDetailModel,
+    isCheckout: Boolean,
+    shippingCost: Int = 0
+) {
 
     Column(
         Modifier
@@ -42,7 +46,10 @@ fun CartPriceDetailSection(cartDetail : CartDetailModel) {
         Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
 
             Text(
-                text = stringResource(id = R.string.basket_summary),
+                text = if (isCheckout)
+                    stringResource(id = R.string.price_detail)
+                else
+                    stringResource(id = R.string.basket_summary),
                 style = Typography.h3,
                 fontWeight = FontWeight.Bold
             )
@@ -79,17 +86,29 @@ fun CartPriceDetailSection(cartDetail : CartDetailModel) {
             cartDetail.totalPayable.toString()
         )
 
-        Spacer(modifier = Modifier.size(36.dp))
+        if (!isCheckout) {
+            Spacer(modifier = Modifier.size(36.dp))
 
-        Text(
-            text = stringResource(id = R.string.post_info),
-            style = Typography.h6,
-            color = Color.Gray.copy(0.7f),
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Start
-        )
+            Text(
+                text = stringResource(id = R.string.post_info),
+                style = Typography.h6,
+                color = Color.Gray.copy(0.7f),
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Start
+            )
+        }
 
         Spacer(modifier = Modifier.size(16.dp))
+
+        if (isCheckout) {
+            Divider(Modifier.fillMaxWidth(), Color.Gray.copy(0.2f))
+
+            Spacer(modifier = Modifier.size(36.dp))
+
+            PostSection(shippingCost)
+
+            Spacer(modifier = Modifier.size(16.dp))
+        }
 
         Divider(Modifier.fillMaxWidth(), Color.Gray.copy(0.2f))
 
@@ -104,7 +123,41 @@ fun CartPriceDetailSection(cartDetail : CartDetailModel) {
 
 }
 
+@Composable
+fun PostSection(shippingCost: Int) {
 
+    Column(Modifier.fillMaxWidth()) {
+
+        PriceDetailText(
+            stringResource(id = R.string.shipment_cost),
+            shippingCost.toString()
+        )
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Row(Modifier.fillMaxWidth(), Arrangement.Start, Alignment.CenterVertically) {
+            Icon(
+                painter = painterResource(id = R.drawable.dot),
+                contentDescription = null,
+                Modifier.size(6.dp),
+                tint = Color.Gray.copy(0.7f)
+            )
+
+            Spacer(modifier = Modifier.size(4.dp))
+
+            Text(
+                text = stringResource(id = R.string.post_detail),
+                style = Typography.h6,
+                color = Color.Gray.copy(0.7f)
+            )
+
+        }
+
+        Spacer(modifier = Modifier.size(8.dp))
+
+    }
+
+}
 
 
 @Composable
@@ -116,7 +169,7 @@ private fun PriceDetailText(title: String, price: String, color: Color = Color.B
             text = title,
             style = Typography.h5,
             fontWeight = FontWeight.SemiBold,
-            color = Color.Gray.copy(0.9f)
+            color = Color.DarkGray
         )
 
         Row {

@@ -20,4 +20,6 @@ val DigikalaBlue = Color(0xFF1771B9)
 
 val Amber = Color(0xffFFBF00)
 
+val Orange = Color(0xFFFF5722)
+
 

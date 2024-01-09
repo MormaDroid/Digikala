@@ -8,4 +8,6 @@ class CheckoutRepository @Inject constructor(private val api: ICheckout) : BaseA
 
     suspend fun getUserAddress(token : String) = safeApiCall { api.getUserAddress(token) }
 
+    suspend fun getShippingCost(address : String) = safeApiCall { api.getShippingCost(address) }
+
 }

@@ -3,6 +3,7 @@ package mohsen.morma.digikala.ui.screen.checkout
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -25,7 +26,7 @@ import mohsen.morma.digikala.util.Constants
 @Composable
 fun CheckoutTopBarSection(navController: NavHostController) {
 
-    Row(Modifier.fillMaxWidth(), Arrangement.Start, Alignment.CenterVertically) {
+    Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), Arrangement.Start, Alignment.CenterVertically) {
 
         IconButton(onClick = { navController.navigate(Screen.Basket.route) { popUpTo(0) } }) {
             Icon(

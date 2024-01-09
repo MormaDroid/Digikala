@@ -14,4 +14,9 @@ interface ICheckout {
         token : String
     ) : Response<NetworkModel<List<ResponseAddressModel>>>
 
+    @GET("api/v1/getShippingCost")
+    suspend fun getShippingCost(
+        @Query("address") address : String
+    ) : Response<NetworkModel<Int>>
+
 }
