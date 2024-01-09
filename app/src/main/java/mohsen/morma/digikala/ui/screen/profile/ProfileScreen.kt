@@ -39,7 +39,9 @@ fun ProfileScreen(
     datastoreVM: DatastoreVM = hiltViewModel()
 ) {
 
-    if (!datastoreVM.restoreUserToken().isNullOrBlank()) {
+    val userToken = datastoreVM.restoreUserToken()
+
+    if (!userToken.isNullOrBlank() && userToken != "null") {
         ProfileUI()
     } else {
         when (profileVM.screenState) {
@@ -54,6 +56,8 @@ fun ProfileScreen(
 
 @Composable
 fun ProfileUI() {
+
+//    AppConfig()
 
     LazyColumn(
         modifier = Modifier

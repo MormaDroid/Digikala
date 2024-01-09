@@ -29,10 +29,10 @@ import mohsen.morma.digikala.util.Constants.USER_LANG
 import mohsen.morma.digikala.util.DigitHelper
 
 @Composable
-fun BuyProcessContinue(payablePrice: Int) {
+fun BuyProcessContinue(payablePrice: Int, onclick: () -> Unit) {
 
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { onclick() },
         modifier = Modifier
             .height(64.dp)
             .width(212.dp),

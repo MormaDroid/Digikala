@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import mohsen.morma.digikala.ui.screen.basket.BasketScreen
 import mohsen.morma.digikala.ui.screen.category.CategoryScreen
+import mohsen.morma.digikala.ui.screen.checkout.CheckoutScreen
 import mohsen.morma.digikala.ui.screen.home.HomeScreen
 import mohsen.morma.digikala.ui.screen.profile.ProfileScreen
 import mohsen.morma.digikala.ui.screen.splash.SplashScreen
@@ -20,6 +21,7 @@ fun NavSetup(navController: NavHostController) {
         composable(Screen.Category.route){ CategoryScreen()}
         composable(Screen.Basket.route){ BasketScreen(navController)}
         composable(Screen.Profile.route){ ProfileScreen()}
+        composable(Screen.Checkout.route){CheckoutScreen(navController)}
 
     }
 

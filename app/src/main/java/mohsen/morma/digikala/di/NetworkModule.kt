@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mohsen.morma.digikala.data.remote.IBasket
 import mohsen.morma.digikala.data.remote.ICategory
+import mohsen.morma.digikala.data.remote.ICheckout
 import mohsen.morma.digikala.data.remote.IHome
 import mohsen.morma.digikala.data.remote.IProfile
 import mohsen.morma.digikala.util.Constants
@@ -57,5 +58,9 @@ object NetworkModule {
     @Provides
     fun provideProfileInterface(retrofit: Retrofit): IProfile =
         retrofit.create(IProfile::class.java)
+
+    @Provides
+    fun provideCheckoutInterface(retrofit: Retrofit): ICheckout =
+        retrofit.create(ICheckout::class.java)
 
 }

@@ -17,7 +17,7 @@ fun AppConfig(
     datastoreVM: DatastoreVM = hiltViewModel(),
     profileVM: ProfileVM = hiltViewModel()
 ) {
-    getDataStoreVariables(datastoreVM)
+
 
     profileVM.refreshToken(Constants.USER_PASSWORD, Constants.USER_PHONE)
 
@@ -32,6 +32,11 @@ fun AppConfig(
                         datastoreVM.saveUserToken(user.token)
                         datastoreVM.saveUserId(user.id)
                         datastoreVM.saveUserPhoneNumber(user.phone)
+
+                        Constants.USER_TOKEN = user.token
+                        Constants.USER_ID = user.id
+                        Constants.USER_PHONE = user.phone
+
                         datastoreVM.saveUserPassword(profileVM.inputPasswordState)
 
                         getDataStoreVariables(datastoreVM)
@@ -43,6 +48,7 @@ fun AppConfig(
         }
     }
 
+    getDataStoreVariables(datastoreVM)
 
 }
 

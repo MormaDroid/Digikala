@@ -45,9 +45,46 @@ fun RegistryScreen(
 
     val context = LocalContext.current
 
+    LaunchedEffect(Dispatchers.Main) {
+        profileVM.loginResult.collectLatest { result ->
+            when (result) {
+                is NetworkResult.Success -> {
+                    result.data?.let { user ->
+                        if (user.token.isNotEmpty()) {
 
+                            Log.e(Constants.TAG, "RegistryScreen: ${user.token} ")
 
+                            datastoreVM.saveUserToken(user.token)
+                            datastoreVM.saveUserId(user.id)
+                            datastoreVM.saveUserPhoneNumber(user.phone)
+                            Constants.USER_PHONE = user.phone
+                            Constants.USER_TOKEN = user.token
 
+                            datastoreVM.saveUserPassword(profileVM.inputPasswordState)
+
+                            profileVM.screenState = ProfileScreenState.PROFILE_STATE
+                        }
+                    }
+
+                    profileVM.isLoading = false
+
+                }
+
+                is NetworkResult.Error -> {
+
+                    profileVM.isLoading = false
+
+                    Toast.makeText(
+                        context,
+                        context.getText(R.string.password_error),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                is NetworkResult.Loading -> {}
+            }
+        }
+    }
     Column(
         Modifier
             .fillMaxWidth()
@@ -132,41 +169,5 @@ fun RegistryScreen(
             }
     }
 
-    LaunchedEffect(Dispatchers.Main) {
-        profileVM.loginResult.collectLatest { result ->
-            when (result) {
-                is NetworkResult.Success -> {
-                    result.data?.let {user->
-                        if (user.token.isNotEmpty()) {
 
-                            Log.e(Constants.TAG, "RegistryScreen: ${user.token} ")
-
-                            datastoreVM.saveUserToken(user.token)
-                            datastoreVM.saveUserId(user.id)
-                            datastoreVM.saveUserPhoneNumber(user.phone)
-                            datastoreVM.saveUserPassword(profileVM.inputPasswordState)
-
-                            profileVM.screenState = ProfileScreenState.PROFILE_STATE
-                        }
-                    }
-
-                    profileVM.isLoading = false
-
-                }
-
-                is NetworkResult.Error -> {
-
-                    profileVM.isLoading = false
-
-                    Toast.makeText(
-                        context,
-                        context.getText(R.string.password_error),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-                is NetworkResult.Loading -> {}
-            }
-        }
-    }
 }

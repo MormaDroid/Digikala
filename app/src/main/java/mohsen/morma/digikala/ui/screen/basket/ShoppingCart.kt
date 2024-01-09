@@ -35,13 +35,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import mohsen.morma.digikala.data.room.CartEntity
+import mohsen.morma.digikala.navigation.Screen
 import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.viewmodel.BasketVM
 
 @Composable
 fun ShoppingCart(
-    basketVM: BasketVM = hiltViewModel(),
-    navController: NavHostController
+    basketVM: BasketVM = hiltViewModel(), navController: NavHostController
 ) {
 
     val cartDetail by basketVM.cartDetail.collectAsState()
@@ -87,7 +87,7 @@ fun ShoppingCart(
             ) {
 
                 item {
-                    if (Constants.USER_TOKEN == "null"){
+                    if (Constants.USER_TOKEN == "null") {
                         LoginOrRegisterSection(navController)
                     }
                 }
@@ -143,22 +143,24 @@ fun ShoppingCart(
             }
 
 
-            if (cartDetail.totalCount>0)
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.17f)
-                        .border(1.dp, color = Color.LightGray.copy(0.2f), RoundedCornerShape(8.dp))
-                        .background(Color.White)
-                        .align(Alignment.BottomCenter)
-                        .padding(bottom = 58.dp, start = 16.dp, end = 16.dp),
-                    Arrangement.SpaceBetween,
-                    Alignment.CenterVertically
-                ) {
+            if (cartDetail.totalCount > 0) Row(
+                Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.17f)
+                    .border(1.dp, color = Color.LightGray.copy(0.2f), RoundedCornerShape(8.dp))
+                    .background(Color.White)
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 58.dp, start = 16.dp, end = 16.dp),
+                Arrangement.SpaceBetween,
+                Alignment.CenterVertically
+            ) {
 
-                    BuyProcessContinue(cartDetail.totalPayable)
-
+                BuyProcessContinue(cartDetail.totalPayable) {
+                    if (Constants.USER_TOKEN != "null") navController.navigate(Screen.Checkout.route)
+                    else navController.navigate(Screen.Profile.route)
                 }
+
+            }
 
         }
     }
