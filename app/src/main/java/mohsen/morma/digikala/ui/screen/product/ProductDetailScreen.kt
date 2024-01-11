@@ -14,6 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -27,10 +28,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import mohsen.morma.digikala.data.remote.NetworkResult
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
+import mohsen.morma.digikala.data.remote.model.product.Comment
 import mohsen.morma.digikala.data.remote.model.product.ProductResponse
+import mohsen.morma.digikala.navigation.Screen
 import mohsen.morma.digikala.ui.component.ScreenLoading
 import mohsen.morma.digikala.ui.screen.checkout.CheckoutDivider
 import mohsen.morma.digikala.util.Constants.TAG
+import mohsen.morma.digikala.util.Constants.USER_TOKEN
 import mohsen.morma.digikala.viewmodel.ProductVM
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -60,6 +64,24 @@ fun ProductDetailScreen(
         mutableStateOf("")
     }
 
+    var comments by rememberSaveable {
+        mutableStateOf<List<Comment>>(emptyList())
+    }
+
+    var commentCount by rememberSaveable {
+        mutableIntStateOf(0)
+    }
+
+    var name by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    var image by rememberSaveable {
+        mutableStateOf("")
+    }
+
+
+
     LaunchedEffect(true) {
         productVM.productDetail.collectLatest { result ->
             when (result) {
@@ -73,6 +95,10 @@ fun ProductDetailScreen(
                                 categoryId
                             )
                         }
+                        product.comments?.let { comments = it }
+                        product.commentCount?.let { commentCount = it }
+                        product.name?.let { name = it }
+                        product.imageSlider?.let { image = it[0].image }
                     }
 
                     delay(700)
@@ -96,7 +122,6 @@ fun ProductDetailScreen(
     }
 
     LaunchedEffect(true) {
-
         productVM.similarProducts.collectLatest { similarList ->
 
             when (similarList) {
@@ -119,7 +144,6 @@ fun ProductDetailScreen(
             }
 
         }
-
     }
 
 
@@ -138,7 +162,18 @@ fun ProductDetailScreen(
                     )
                 }
             ) {
-                ProductUI(navController, productDetail, similarProductList, description, technical)
+                ProductUI(
+                    navController,
+                    productDetail,
+                    similarProductList,
+                    description,
+                    technical,
+                    comments,
+                    commentCount,
+                    productId,
+                    name,
+                    image
+                )
             }
         }
 
@@ -153,7 +188,12 @@ fun ProductUI(
     product: ProductResponse,
     similarProductList: List<AmazingProductModel>,
     description: String,
-    technical: String
+    technical: String,
+    comments: List<Comment>,
+    commentCount: Int,
+    id: String,
+    name: String,
+    image: String
 ) {
 
     LazyColumn(
@@ -189,8 +229,6 @@ fun ProductUI(
             }
         }
 
-        item { Spacer(modifier = Modifier.size(24.dp)) }
-
         item { CheckoutDivider(thickness = 6.dp, spacerSize = 24.dp) }
 
         item { Spacer(modifier = Modifier.size(24.dp)) }
@@ -202,6 +240,32 @@ fun ProductUI(
                 technical = technical
             )
         }
+
+        item { CheckoutDivider(thickness = 6.dp, spacerSize = 24.dp) }
+
+        item { Spacer(modifier = Modifier.size(24.dp)) }
+
+        item {
+            ProductCommentSection(comments, commentCount)
+        }
+
+        item { Spacer(modifier = Modifier.size(24.dp)) }
+
+        item {
+            ProductAddCommentSection {
+
+                if (USER_TOKEN == "null")
+                    navController.navigate(Screen.Profile.route)
+                else
+                    navController.navigate(
+                        Screen.AddComment.route + "?productId=${id}?productName=${name}?imageUrl=${image}"
+                    )
+            }
+        }
+
+        item { CheckoutDivider(thickness = 1.dp, spacerSize = 24.dp) }
+
+        item { Spacer(modifier = Modifier.size(24.dp)) }
 
 
     }

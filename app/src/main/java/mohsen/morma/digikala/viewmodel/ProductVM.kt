@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import mohsen.morma.digikala.data.remote.NetworkResult
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
 import mohsen.morma.digikala.data.remote.model.product.ProductResponse
+import mohsen.morma.digikala.data.remote.model.product.SetNewCommentModel
 import mohsen.morma.digikala.repository.ProductRepository
 import javax.inject.Inject
 
@@ -16,7 +17,10 @@ import javax.inject.Inject
 class ProductVM @Inject constructor(private val repository: ProductRepository) : ViewModel() {
 
     var productDetail = MutableStateFlow<NetworkResult<ProductResponse>>(NetworkResult.Loading())
+
     var similarProducts = MutableStateFlow<NetworkResult<List<AmazingProductModel>>>(NetworkResult.Loading())
+
+    var commentResult = MutableStateFlow<NetworkResult<String>>(NetworkResult.Loading())
 
     fun getProduct(id: String) {
 
@@ -31,5 +35,12 @@ class ProductVM @Inject constructor(private val repository: ProductRepository) :
             repository.getSimilarProducts(categoryId).let { similarProducts.emit(it) }
         }
     }
+
+    fun setNewCommentModel(comment : SetNewCommentModel){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.setNewComment(comment).let { commentResult.emit(it) }
+        }
+    }
+
 
 }

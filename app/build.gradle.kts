@@ -123,6 +123,9 @@ dependencies {
 //    //Zarin-pal
 //    implementation ("com.zarinpal:payment-provider-ktx:0.5.3")
 
+    //Paging
+    implementation("androidx.paging:paging-compose:3.2.1")
+
 
 
 }

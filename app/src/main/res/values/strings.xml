@@ -118,6 +118,23 @@
     <string name="product_interview">نقد و بررسی</string>
     <string name="Specifications">مشخصات</string>
     <string name="satisfaction">رضایت خریداران | عملکرد</string>
+    <string name="vote">نظر</string>
+    <string name="like">پیشنهاد میکنم</string>
+    <string name="dislike">پیشنهاد نمی کنم</string>
+    <string name="not_sure">مطمئن نیستم</string>
+    <string name="write_opinion">دیدگاه خود را درباره این کالا بنویسید.</string>
+    <string name="write_opinion_score">امتیاز دیجی‌کلاب</string>
+    <string name="digiclub_confirm">پس از تایید نظر، با مراجعه به صفحه ماموریت های کلابی امتیاز خود را دریافت کنید</string>
+    <string name="comment_title">عنوان نظر</string>
+
+    <string name="very_bad">خیلی بد</string>
+    <string name="bad">بد</string>
+    <string name="not_bad">متوسط</string>
+    <string name="good">خوب</string>
+    <string name="very_good">خیلی خوب</string>
+    <string name="unknown_comment">ارسال دیدگاه به صورت ناشناس</string>
+    <string name="send_commit">ارسال دیدگاه</string>
+    <string name="viewpoint">دیدگاه</string>
 
 
 </resources>

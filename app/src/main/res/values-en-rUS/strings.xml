@@ -119,6 +119,22 @@
     <string name="product_interview">Product reviews</string>
     <string name="Specifications">Specifications</string>
     <string name="satisfaction">Buyer satisfaction | Function</string>
+    <string name="vote">vote</string>
+    <string name="like">I suggest</string>
+    <string name="dislike">I don\'t suggest</string>
+    <string name="not_sure">Not sure</string>
+    <string name="write_opinion">Write your opinion about this product.</string>
+    <string name="write_opinion_score">Digiclub score</string>
+    <string name="digiclub_confirm">After confirming the opinion, get your points by visiting the club missions page</string>
+    <string name="comment_title">comment title</string>
+    <string name="very_bad">Very bad</string>
+    <string name="bad">Bad</string>
+    <string name="not_bad">Not bad</string>
+    <string name="good">Good</string>
+    <string name="very_good">Excellent</string>
+    <string name="unknown_comment">Unknown comment</string>
+    <string name="send_commit">Send commit</string>
+    <string name="viewpoint">Viewpoint</string>
 
 
 </resources>

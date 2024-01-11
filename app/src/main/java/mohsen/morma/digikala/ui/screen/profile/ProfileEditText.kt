@@ -2,12 +2,15 @@ package mohsen.morma.digikala.ui.screen.profile
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import mohsen.morma.digikala.ui.theme.DigikalaBlue
 import mohsen.morma.digikala.ui.theme.Typography
@@ -40,7 +43,8 @@ fun ProfileEditText(
             disabledLabelColor = Color.Transparent,
             disabledTextColor = Color.Black
         ),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(8.dp),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done, keyboardType = KeyboardType.Email)
     )
 
 }

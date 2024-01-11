@@ -18,6 +18,8 @@ sealed class Screen (val route : String){
     data object Description : Screen("Description")
     data object Technical : Screen("Technical")
 
+    data object AddComment : Screen("AddComment")
+
     fun withArgs(vararg args : Any):String = buildString {
         append(route)
         args.forEach {

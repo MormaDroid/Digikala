@@ -12,6 +12,7 @@ import mohsen.morma.digikala.ui.screen.checkout.CheckoutScreen
 import mohsen.morma.digikala.ui.screen.home.HomeScreen
 import mohsen.morma.digikala.ui.screen.product.ProductDetailScreen
 import mohsen.morma.digikala.ui.screen.product.ProductIntroductionSection
+import mohsen.morma.digikala.ui.screen.product.SetCommentSection
 import mohsen.morma.digikala.ui.screen.product.TechnicalInfoSection
 import mohsen.morma.digikala.ui.screen.profile.ProfileScreen
 import mohsen.morma.digikala.ui.screen.splash.SplashScreen
@@ -61,8 +62,7 @@ fun NavSetup(navController: NavHostController) {
         }
 
         composable(
-            Screen.Technical.route + "/{jsonString}",
-            arguments = listOf(navArgument("jsonString") {
+            Screen.Technical.route + "/{jsonString}", arguments = listOf(navArgument("jsonString") {
                 type = NavType.StringType
                 defaultValue = ""
                 nullable = true
@@ -76,6 +76,28 @@ fun NavSetup(navController: NavHostController) {
 
         }
 
-    }
+        composable(
+            Screen.AddComment.route + "?{productId}?{productName}?{imageUrl}",
+            arguments = listOf(navArgument("productId") {
+                type = NavType.StringType
+                defaultValue = ""
+            }, navArgument("productName") {
+                type = NavType.StringType
+                defaultValue = ""
+            }, navArgument("imageUrl") {
+                type = NavType.StringType
+                defaultValue = ""
+            })
+        ) { argument ->
 
+            argument.arguments?.getString("productId")?.let { id ->
+                argument.arguments?.getString("productName")?.let { name ->
+                    argument.arguments?.getString("imageUrl")?.let { image ->
+                        SetCommentSection(navController, id, name, image)
+                    }
+                }
+            }
+        }
+
+    }
 }

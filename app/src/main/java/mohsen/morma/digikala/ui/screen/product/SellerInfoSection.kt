@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -73,9 +74,10 @@ fun SellerInfoSection(productPrice: Long) {
             Image(
                 painter = painterResource(id = R.drawable.digi_logo),
                 modifier = Modifier
-                    .size(25.dp)
+                    .size(28.dp)
                     .clip(CircleShape),
-                contentDescription = ""
+                contentDescription = "",
+                contentScale = ContentScale.Inside
             )
             Spacer(modifier = Modifier.width(16.dp))
 
@@ -114,7 +116,7 @@ fun SellerInfoSection(productPrice: Long) {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.warranty),
-                modifier = Modifier.size(24.dp),
+                modifier = Modifier.width(20.dp).height(24.dp),
                 contentDescription = ""
             )
 
