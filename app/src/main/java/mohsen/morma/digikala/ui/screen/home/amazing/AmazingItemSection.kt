@@ -2,6 +2,7 @@ package mohsen.morma.digikala.ui.screen.home.amazing
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,9 +30,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
+import mohsen.morma.digikala.navigation.Screen
 import mohsen.morma.digikala.ui.theme.DigikalaDarkGreen
 import mohsen.morma.digikala.ui.theme.DigikalaDarkRed
 import mohsen.morma.digikala.ui.theme.DigikalaRed
@@ -41,15 +44,17 @@ import mohsen.morma.digikala.util.Constants.USER_LANG
 import mohsen.morma.digikala.util.DigitHelper
 
 @Composable
-fun AmazingItemSection(amazingModel: AmazingProductModel) {
+fun AmazingItemSection(amazingModel: AmazingProductModel, navController: NavHostController) {
+
 
     Column(
         Modifier
-            .fillMaxHeight(0.9f)
+            .fillMaxHeight(0.92f)
             .width(200.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(Color.White)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
+            .padding(horizontal = 12.dp, vertical = 16.dp)
+            .clickable { navController.navigate(Screen.ProductDetail.withArgs(amazingModel._id)) },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -158,4 +163,6 @@ fun AmazingItemSection(amazingModel: AmazingProductModel) {
             Spacer(modifier = Modifier.width(if (USER_LANG == PERSIAN_LANG) 24.dp else 20.dp))
         }
     }
+
+
 }

@@ -22,4 +22,6 @@ val Amber = Color(0xffFFBF00)
 
 val Orange = Color(0xFFFF5722)
 
+val GoldColor = Color(0xFFFFD700)
+
 

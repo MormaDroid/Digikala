@@ -15,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.delay
@@ -28,15 +29,15 @@ import mohsen.morma.digikala.util.Constants
 import mohsen.morma.digikala.viewmodel.HomeVM
 
 @Composable
-fun HomeScreen(homeVM: HomeVM = hiltViewModel()) {
+fun HomeScreen(navController: NavHostController, homeVM: HomeVM = hiltViewModel()) {
 
     apiRequest(homeVM)
-    HomeUI(homeVM)
+    HomeUI(navController, homeVM)
 
 }
 
 @Composable
-fun HomeUI(homeVM: HomeVM) {
+fun HomeUI(navController: NavHostController, homeVM: HomeVM) {
 
     var isRefresh by remember {
         mutableStateOf(false)
@@ -73,7 +74,8 @@ fun HomeUI(homeVM: HomeVM) {
                     homeVM.amazingList.collectAsState().value,
                     if (isSystemInDarkTheme()) DigikalaDarkRed else DigikalaRed,
                     R.drawable.box,
-                    if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.amazings else R.drawable.amazing_en
+                    if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.amazings else R.drawable.amazing_en,
+                    navController
                 )
             }
 
@@ -88,7 +90,8 @@ fun HomeUI(homeVM: HomeVM) {
                     homeVM.superMarketAmazingList.collectAsState().value,
                     if (isSystemInDarkTheme()) DigikalaDarkGreen else DigikalaGreen,
                     R.drawable.market_box,
-                    if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.supermarketamazings else R.drawable.amazing_en
+                    if (Constants.USER_LANG == Constants.PERSIAN_LANG) R.drawable.supermarketamazings else R.drawable.amazing_en,
+                    navController
                 )
             }
 
@@ -106,7 +109,12 @@ fun HomeUI(homeVM: HomeVM) {
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
-            item { BestSellerAndFavoriteSection(homeVM.bestSellerList.collectAsState().value,R.string.best_seller)}
+            item {
+                BestSellerAndFavoriteSection(
+                    homeVM.bestSellerList.collectAsState().value,
+                    R.string.best_seller
+                )
+            }
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
@@ -114,7 +122,12 @@ fun HomeUI(homeVM: HomeVM) {
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 
-            item { BestSellerAndFavoriteSection(homeVM.mostFavoriteList.collectAsState().value,R.string.most_favorite) }
+            item {
+                BestSellerAndFavoriteSection(
+                    homeVM.mostFavoriteList.collectAsState().value,
+                    R.string.most_favorite
+                )
+            }
 
             item { Spacer(modifier = Modifier.size(20.dp)) }
 

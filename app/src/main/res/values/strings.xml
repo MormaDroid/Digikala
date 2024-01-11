@@ -103,6 +103,20 @@
     <string name="aount_payable">مبلغ قابل پرداخت</string>
     <string name="pishtaz_post">ارسال توسط پست پیشتاز</string>
     <string name="delivery_delay">3 تا 5 روز کاری</string>
+    <string name="add_to_cart">افزودن به سبد ‌خرید</string>
+    <string name="User_opinion">دیدگاه کاربران</string>
+    <string name="person">نفر</string>
+    <string name="agree_text">از خریداران، این کالا را پیشنهاد کرده اند.</string>
+    <string name="color">رنگ</string>
+    <string name="toman">تومان</string>
+    <string name="manufacturer_price">قیمت تولید کننده:</string>
+    <string name="better_price_suggestion">آیا قیمت بهتری سراغ دارید؟</string>
+    <string name="similar_products">محصولات مشابه</string>
+    <string name="product_attribute">ویژگی های محصول</string>
+    <string name="product_introduction">معرفی اجمالی محصول</string>
+    <string name="technical_specifications">مشخصات فنی</string>
+    <string name="product_interview">نقد و بررسی</string>
+    <string name="Specifications">مشخصات</string>
 
 
 </resources>

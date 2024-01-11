@@ -8,6 +8,7 @@ import mohsen.morma.digikala.data.remote.IBasket
 import mohsen.morma.digikala.data.remote.ICategory
 import mohsen.morma.digikala.data.remote.ICheckout
 import mohsen.morma.digikala.data.remote.IHome
+import mohsen.morma.digikala.data.remote.IProduct
 import mohsen.morma.digikala.data.remote.IProfile
 import mohsen.morma.digikala.util.Constants
 import okhttp3.OkHttpClient
@@ -62,5 +63,9 @@ object NetworkModule {
     @Provides
     fun provideCheckoutInterface(retrofit: Retrofit): ICheckout =
         retrofit.create(ICheckout::class.java)
+
+    @Provides
+    fun provideProductInterface(retrofit: Retrofit): IProduct =
+        retrofit.create(IProduct::class.java)
 
 }

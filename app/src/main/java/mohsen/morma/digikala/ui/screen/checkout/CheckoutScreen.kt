@@ -44,7 +44,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.data.remote.NetworkResult
-import mohsen.morma.digikala.navigation.Screen
+import mohsen.morma.digikala.data.remote.model.checkout.OrderModel
 import mohsen.morma.digikala.ui.component.ScreenLoading
 import mohsen.morma.digikala.ui.screen.basket.BuyProcessContinue
 import mohsen.morma.digikala.ui.screen.basket.CartPriceDetailSection
@@ -74,6 +74,9 @@ fun CheckoutScreen(
     var addressName by remember {
         mutableStateOf("")
     }
+    var addressPhone by remember {
+        mutableStateOf("")
+    }
 
     var isLoading by remember {
         mutableStateOf(true)
@@ -95,6 +98,7 @@ fun CheckoutScreen(
                 } else {
                     address = it[it.lastIndex].address
                     addressName = it[it.lastIndex].name
+                    addressPhone = it[it.lastIndex].name
 
                     checkoutVM.getShippingCost(it[it.lastIndex].address)
 
@@ -202,7 +206,18 @@ fun CheckoutScreen(
                 ) {
 
                     BuyProcessContinue(cartDetail.totalPayable + shippingCost) {
-                        navController.navigate(Screen.Profile.route)
+                        checkoutVM.addNewOrder(
+                            OrderModel(
+                                orderAddress = address,
+                                orderTotalPrice = (cartDetail.totalPayable + shippingCost),
+                                orderTotalDiscount = cartDetail.totalDiscount,
+                                orderUserPhone = addressPhone,
+                                token = Constants.USER_TOKEN,
+                                orderProducts = cartList,
+                                orderUserName = addressName,
+                                orderDate = "20402"
+                            )
+                        )
                     }
 
                 }

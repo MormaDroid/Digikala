@@ -104,6 +104,20 @@
 
     <string name="pishtaz_post">Posted by Pishtaz Post</string>
     <string name="delivery_delay">3 to 5 working days</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="User_opinion">User opinion</string>
+    <string name="person">person</string>
+    <string name="agree_text">Buyers have suggested this product.</string>
+    <string name="color">Color</string>
+    <string name="toman">$</string>
+    <string name="manufacturer_price">Manufacturer price:</string>
+    <string name="better_price_suggestion">Do You Know a Better Price?</string>
+    <string name="similar_products">Similar products</string>
+    <string name="product_attribute">Product Attribute</string>
+    <string name="product_introduction">Brief introduction of the product</string>
+    <string name="technical_specifications">Technical specifications</string>
+    <string name="product_interview">Product reviews</string>
+    <string name="Specifications">Specifications</string>
 
 
 </resources>

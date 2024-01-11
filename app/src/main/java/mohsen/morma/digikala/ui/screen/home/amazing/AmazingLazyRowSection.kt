@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
@@ -24,20 +26,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.data.remote.model.home.AmazingProductModel
 import mohsen.morma.digikala.ui.theme.Typography
 import mohsen.morma.digikala.util.Constants
 
 @Composable
-fun AmazingLazyRowSection(isLoading: Boolean, amazingList: List<AmazingProductModel>) {
+fun AmazingLazyRowSection(
+    isLoading: Boolean,
+    amazingList: List<AmazingProductModel>,
+    navController: NavHostController,
+    amazingIcon: Int,
+    amazingText: Int,
+    backgroundColor : Color
+) {
 
     AnimatedVisibility(visible = !isLoading, enter = fadeIn(tween(2000))) {
-        LazyRow {
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(364.dp)
+                .background(backgroundColor),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
 
-            items(amazingList) {amazingModel->
+            item { AmazingUISection(amazingIcon, amazingText) }
 
-                AmazingItemSection(amazingModel = amazingModel)
+            items(amazingList) { amazingModel ->
+
+                AmazingItemSection(amazingModel = amazingModel, navController)
 
                 Spacer(modifier = Modifier.size(12.dp))
 
@@ -71,6 +89,6 @@ private fun ShowMore() {
 
         Spacer(modifier = Modifier.size(16.dp))
 
-        Text(text = stringResource(id = R.string.see_all), style = Typography.h3 )
+        Text(text = stringResource(id = R.string.see_all), style = Typography.h3)
     }
 }
