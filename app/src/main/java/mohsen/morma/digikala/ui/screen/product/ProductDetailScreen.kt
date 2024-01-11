@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -51,13 +52,27 @@ fun ProductDetailScreen(
         mutableStateOf(ProductResponse())
     }
 
+    var description by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    var technical by rememberSaveable {
+        mutableStateOf("")
+    }
+
     LaunchedEffect(true) {
         productVM.productDetail.collectLatest { result ->
             when (result) {
                 is NetworkResult.Success -> {
-                    result.data?.let {product->
+                    result.data?.let { product ->
                         productDetail = product
-                        product.categoryId?.let { categoryId -> productVM.getSimilarProducts(categoryId) }
+                        description = product.description.toString()
+                        technical = product.technicalFeatures.toString()
+                        product.categoryId?.let { categoryId ->
+                            productVM.getSimilarProducts(
+                                categoryId
+                            )
+                        }
                     }
 
                     delay(700)
@@ -76,7 +91,7 @@ fun ProductDetailScreen(
         }
     }
 
-    var similarProductList by remember {
+    var similarProductList by rememberSaveable {
         mutableStateOf<List<AmazingProductModel>>(emptyList())
     }
 
@@ -86,7 +101,9 @@ fun ProductDetailScreen(
 
             when (similarList) {
                 is NetworkResult.Success -> {
-                    similarList.data?.let { similarProductList = it }
+                    similarList.data?.let {
+                        similarProductList = it
+                    }
                     delay(700)
                     isLoading = false
                 }
@@ -121,7 +138,7 @@ fun ProductDetailScreen(
                     )
                 }
             ) {
-                ProductUI(navController,productDetail,similarProductList)
+                ProductUI(navController, productDetail, similarProductList, description, technical)
             }
         }
 
@@ -134,7 +151,9 @@ fun ProductDetailScreen(
 fun ProductUI(
     navController: NavHostController,
     product: ProductResponse,
-    similarProductList : List<AmazingProductModel>
+    similarProductList: List<AmazingProductModel>,
+    description: String,
+    technical: String
 ) {
 
     LazyColumn(
@@ -161,7 +180,14 @@ fun ProductUI(
 
         item { Spacer(modifier = Modifier.size(24.dp)) }
 
-        item { product.categoryId?.let { SimilarProductsSection(navController, similarProductList) } }
+        item {
+            product.categoryId?.let {
+                SimilarProductsSection(
+                    navController,
+                    similarProductList
+                )
+            }
+        }
 
         item { Spacer(modifier = Modifier.size(24.dp)) }
 
@@ -169,8 +195,13 @@ fun ProductUI(
 
         item { Spacer(modifier = Modifier.size(24.dp)) }
 
-        item { ProductDescriptionSection(navController,product) }
-
+        item {
+            ProductDescriptionSection(
+                navController,
+                description = description,
+                technical = technical
+            )
+        }
 
 
     }

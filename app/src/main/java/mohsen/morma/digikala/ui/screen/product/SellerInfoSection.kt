@@ -87,8 +87,7 @@ fun SellerInfoSection(productPrice: Long) {
                 Spacer(modifier = Modifier.height(4.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "${DigitHelper.digitByLocate("99")}%" +
-                                " رضایت خریداران | عملکرد ",
+                        text = "${DigitHelper.digitByLocate("99")}%" + stringResource(id = R.string.satisfaction),
                         style = Typography.h6,
                         color = Color.DarkGray.copy(0.8f)
                     )

@@ -14,7 +14,10 @@ import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -22,15 +25,31 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import mohsen.morma.digikala.R
-import mohsen.morma.digikala.data.remote.model.product.ProductResponse
 import mohsen.morma.digikala.navigation.Screen
 import mohsen.morma.digikala.ui.screen.checkout.CheckoutDivider
 import mohsen.morma.digikala.ui.theme.Typography
 
 
-
 @Composable
-fun ProductDescriptionSection(navController: NavHostController,product: ProductResponse) {
+fun ProductDescriptionSection(
+    navController: NavHostController,
+    description: String,
+    technical: String
+) {
+
+    var isShowDescription by remember {
+        mutableStateOf(true)
+    }
+    if (description.isBlank()) {
+        isShowDescription = false
+    }
+
+    var isShowTechnical by remember {
+        mutableStateOf(true)
+    }
+    if (technical == "null") {
+        isShowTechnical = false
+    }
 
     Column(
         Modifier
@@ -50,10 +69,8 @@ fun ProductDescriptionSection(navController: NavHostController,product: ProductR
 
         Spacer(modifier = Modifier.size(16.dp))
 
-        DescriptionItem(stringResource(id = R.string.product_introduction)){
-            product.description?.let {
-                navController.navigate(Screen.Description.withArgs(it))
-            }
+        DescriptionItem(stringResource(id = R.string.product_introduction)) {
+            if (isShowDescription) navController.navigate(Screen.Description.withArgs(description))
         }
 
         Spacer(modifier = Modifier.size(16.dp))
@@ -62,10 +79,8 @@ fun ProductDescriptionSection(navController: NavHostController,product: ProductR
 
         Spacer(modifier = Modifier.size(16.dp))
 
-        DescriptionItem(stringResource(id = R.string.technical_specifications)){
-            product.technicalFeatures?.let {
-                navController.navigate(Screen.Technical.withArgs(it))
-            }
+        DescriptionItem(stringResource(id = R.string.technical_specifications)) {
+            if (isShowTechnical) navController.navigate(Screen.Technical.withArgs(technical))
         }
 
         Spacer(modifier = Modifier.size(16.dp))
