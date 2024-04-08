@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -60,7 +61,8 @@ fun ProductDescriptionSection(
         Text(
             text = stringResource(id = R.string.product_attribute),
             style = Typography.h4,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
         )
 
         Spacer(modifier = Modifier.size(16.dp))
@@ -102,13 +104,15 @@ fun DescriptionItem(string: String, onClick: () -> Unit) {
         Text(
             text = string,
             style = Typography.h4,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
         )
 
         Icon(
             imageVector = Icons.Default.KeyboardArrowLeft,
             contentDescription = null,
-            Modifier.size(24.dp)
+            Modifier.size(24.dp),
+            tint = Color.Black
         )
     }
 }

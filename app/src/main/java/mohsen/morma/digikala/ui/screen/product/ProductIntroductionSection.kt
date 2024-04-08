@@ -1,8 +1,10 @@
 package mohsen.morma.digikala.ui.screen.product
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,10 +29,11 @@ fun ProductIntroductionSection(description: String) {
 
     Scaffold(topBar = { IntroductionTopBar() }) {
 
-        LazyColumn{
+        LazyColumn(Modifier.fillMaxSize().background(Color.White)){
             item {
                 Column(Modifier
                     .fillMaxWidth()
+                    .background(Color.White)
                     .padding(top = 92.dp, start = 16.dp, end = 16.dp)) {
 
                     Text(

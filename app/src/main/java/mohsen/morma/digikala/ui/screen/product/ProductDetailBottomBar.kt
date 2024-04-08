@@ -30,7 +30,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import mohsen.morma.digikala.R
 import mohsen.morma.digikala.data.remote.model.product.ProductResponse
 import mohsen.morma.digikala.data.room.CartEntity
@@ -44,10 +43,9 @@ import mohsen.morma.digikala.viewmodel.BasketVM
 
 @Composable
 fun ProductDetailBottomBar(
-    navController: NavHostController,
     productItem: ProductResponse,
     basketVM: BasketVM = hiltViewModel(),
-    id : String
+    id: String
 ) {
 
     BottomNavigation(
